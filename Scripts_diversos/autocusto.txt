@@ -1,0 +1,32 @@
+select *
+	  FROM tb_aut_prod
+	 WHERE fk_movprd IN (SELECT fk_movprd 
+						 FROM tb_aut_prod
+						GROUP BY fk_movprd 
+						HAVING count(fk_movprd) > 1)
+       AND NOT pk_autpro IN (SELECT MIN(pk_autpro) 
+						   FROM tb_aut_prod
+						  GROUP BY fk_movprd 
+						  HAVING count(fk_movprd) > 1); 
+						  
+						  
+						  
+ DELETE FROM tb_aut_prod where pk_autpro in (select aut.pk_autpro
+from tb_aut_prod aut, famovprd prd, famovcad cad, fapaccad pac
+where prd.sequencial = aut.fk_movprd
+  and cad.tipo_comanda = prd.tipo_comanda
+  and cad.comanda = prd.comanda
+  and cad.cod_pac = pac.cod_pac
+  and pac.cod_con = '999'
+  and aut.fk_staaut IN ( 2, 3 ));
+
+DELETE
+  FROM tb_aut_prod
+ WHERE fk_movprd IN (SELECT fk_movprd 
+					   FROM tb_aut_prod
+					 GROUP BY fk_movprd 
+					 HAVING count(fk_movprd) > 1)
+   AND NOT pk_autpro IN (SELECT MIN(pk_autpro) 
+						   FROM tb_aut_prod
+						 GROUP BY fk_movprd 
+						 HAVING count(fk_movprd) > 1); 

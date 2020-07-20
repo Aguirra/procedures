@@ -1,0 +1,1 @@
+update rel_dic_campo set selecionavel = 'T', pesquisavel = 'T', ordenavel = 'T' where nome_tabela='tb_prod_fabricante';

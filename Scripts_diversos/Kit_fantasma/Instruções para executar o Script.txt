@@ -1,0 +1,19 @@
+
+Instruções para execução dos Scripts.
+
+1 ) Descompactar o arquivo Kit_fantasma.7z
+
+2 ) Para ajustarmos o kit fantasma devem ser executados na base os scripts script_atualiza_estkit  e script_acerto_estkit  que estão dentro da pasta 1 - Acerto da Base:
+
+É necessário que ninguém esteja utilizando a base;
+Executar o script "script_atualiza_estkit";
+Executar o script "script_acerto_estkit";
+Caso a consulta do script "script_acerto_estkit" retorne itens com quantidade maior que zero deverão ser feitos créditos no estoque para estes itens. Os créditos deverão levar em consideração o código do produto (cod_prd), o código do setor (cod_set) e o código de barra interno (cod_barra_int);
+Se executou o passo anterior deverá executar novamente o script "script_atualiza_estkit".
+
+3 ) Na pasta 2 - Inclusão de log, executar os scripts para geração dos logs.
+É necessário que ninguém esteja utilizando a base;
+Executar os scripts
+1 - Criação da Tabela.sql
+2 - Criação da Procedure que Insere Log.sql
+3 - Alteração da procedure sp_est_atuestkit para Inserir Log.sql

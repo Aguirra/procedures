@@ -1,0 +1,12 @@
+select * from tb_prd_lib where fk_alibde='57'
+select * from aliasbde where fk_webser='30'
+select * from TB_WEBSERVICE where pk_webser ='30'
+select * from tl_replicacao where fk_id ='57'
+select * from tl_replicacao_aux where fk_id ='57'
+
+
+delete from tb_prd_lib where fk_alibde='57'
+delete from tl_replicacao_aux where fk_id='57'
+delete from tl_replicacao where fk_id='57'
+delete from aliasbde where fk_webser='30'
+delete from tb_webservice where pk_webser ='30'

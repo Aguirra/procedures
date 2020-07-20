@@ -1,0 +1,29 @@
+//Tabela Dif
+SELECT * FROM TI_CTR_PENDENCIA_FECHAMENTO
+
+// Gera Diferenca na DIF
+CREATE FUNCTION FC_GET_SUMQUANT_AJUSTAFEC(
+ pCodigo LIKE faprdcad.codigo
+,pSetor LIKE fasetcad.cod_set
+,pCodBarraInt LIKE eslote_validade.cod_barra_int
+,pData DATE)
+
+//Contabil != Fisico
+CREATE PROCEDURE SP_INS_C_DIF_FECHA(
+ pData  DATE
+,pProd  LIKE faprdcad.codigo 
+,pSetor LIKE fasetcad.cod_set
+,pBarra LIKE eslote_validade.cod_barra_int
+,pQuant LIKE esmovite.quant)
+
+//Contabil = Fisico
+CREATE PROCEDURE SP_INS_CD_DIF_FECHA(
+ pData  DATE
+,pProd  LIKE faprdcad.codigo 
+,pSetor LIKE fasetcad.cod_set
+,pBarra LIKE eslote_validade.cod_barra_int
+,pQuant LIKE esmovite.quant)
+
+//Ajuste
+EXECUTE PROCEDURE SP_AJUSTA_FECHAMENTO_MES();
+ 

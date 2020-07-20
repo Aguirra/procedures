@@ -1,0 +1,2 @@
+﻿update esestcad set est_bloq = 0, controle = decode(controle,'0','1','0') where cod_set = '0077' and cod_prd = '000325' and cod_barra_int = '000098276' and est_bloq > 0;
+update esestcad set est_bloq = 0, controle = decode(controle,'0','1','0') where cod_set = '0077' and cod_prd = '604204' and est_bloq > 0;

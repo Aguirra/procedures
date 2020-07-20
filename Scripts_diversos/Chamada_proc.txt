@@ -1,0 +1,22 @@
+CREATE OR REPLACE PROCEDURE SISHOSP."FC_ALERTA_EWS" (
+   pCodPac IN VARCHAR2,
+   pALERTA OUT VARCHAR2,
+   pDATA   OUT DATE
+)
+
+
+
+set serveroutput on
+declare
+  v0 varchar2(7) := '1234567';
+  v1 varchar2(255);
+  v2 date;
+begin
+  SISHOSP.FC_ALERTA_EWS(v0,v1,v2);
+  dbms_output.put_line('retorno1 --> '||v1);
+  dbms_output.put_line('retorno2 --> '||v2);
+end;
+/
+  
+  
+  

@@ -1,0 +1,7 @@
+select length(descricao) qdt, codigo, descricao,
+q'[update faprdcad set descricao = ']' || substr(descricao,0,34) || q'[' where codigo = ']' || codigo || q'[';]' atualiza
+from faprdcad
+where bloqueado = 'N'
+group by codigo, descricao
+having length(descricao) > 35
+order by qdt;

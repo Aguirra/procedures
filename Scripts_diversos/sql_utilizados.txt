@@ -1,0 +1,329 @@
+select * from wpdtab where lower(descricao) like '%habilita%custo%'
+select * from wpdtab where lower(descricao) like '%bloqueia%custo%'
+
+select * from wpdtab where cod_parametro in ('hab_itens_alto_custo', 'bloq_incl_fat_alto_custo', 'bloq_fech_fat_alto_custo')
+update wpdtab set valor = 'S' where cod_parametro in ('hab_itens_alto_custo', 'bloq_incl_fat_alto_custo', 'bloq_fech_fat_alto_custo') --S
+
+
+select * from fapaccad where cod_pac = 'H049671'
+select * from fapaccad where cod_pac = 'H049671'
+
+select cod_pac, cod_prt, matricula from fapaccad where data_ent between TO_DATE('01/10/2018 13:36:41','%d/%m/%Y %H:%M:%S') and TO_DATE('30/10/2018 13:36:41','%d/%m/%Y %H:%M:%S')
+and cod_con = '001' and tipo_pac = 'I'
+
+
+
+
+
+select * from fapaccad where cod_pac = 'H094828'
+
+
+
+
+
+SELECT DISTINCT EH_INAMPS,FANTASIA,NOME_PLANO,IND_ENVIO_ONLINE,FAPACCAD.COD_CON, 
+FAPACCAD.HORA_ALTA
+ HORA_ALTA,
+FAPACCAD.HORA_ENT
+ HORA_ENT, FAPACCAD.DATA_ENT, FAPACCAD.DATA_ALTA, FAPACCAD.DATA_ALTA_MEDICA,
+ FAPRTCAD.NOME_PAC, FAPACCAD.TIPO_PAC, FAPACCAD.COD_PAC 
+ FROM FAPACCAD,FACONCAD,FAPLACAD,FAPRTCAD 
+WHERE FAPACCAD.COD_CON = FACONCAD.COD_CON  
+  AND FAPRTCAD.COD_PRT = FAPACCAD.COD_PRT 
+  AND (FAPACCAD.COD_PLA = FAPLACAD.COD_PLA 
+  AND FAPACCAD.COD_CON = FAPLACAD.COD_CON) 
+  AND COD_PAC = 'H094828'
+
+
+
+select * from famovcad where comanda = 'B918296'
+
+SELECT com.codigo 
+FROM   famovprd com 
+       INNER JOIN tb_aut_prod aut 
+               ON ( com.sequencial = aut.fk_movprd ) 
+       INNER JOIN famovdestino dest 
+               ON ( dest.sequencial = com.sequencial ) 
+WHERE  aut.fk_staaut IN ( 2, 3 ) 
+       AND com.sn_altcusto = 'S' 
+       AND com.comanda = 'B918296'
+       AND com.tipo_comanda = '010'
+
+select * from famovprd where comanda = 'B918296'
+select * from tb_aut_prod
+select * from famovdestino
+
+
+select * from fapaccad where cod_pac = 'H094828'
+select * from fapaccad where cod_pac = 'H049671'
+
+
+select * from falogcad  where data between 
+TO_DATE('20/10/2018 13:36:41','%d/%m/%Y %H:%M:%S') and TO_DATE('31/10/2018 13:36:41','%d/%m/%Y %H:%M:%S')
+and lower(complemento) like '%b918296%'
+
+
+H049671
+select * from falogcad  where data between 
+TO_DATE('18/10/2018 00:00:01','%d/%m/%Y %H:%M:%S') and TO_DATE('18/10/2018 23:59:59','%d/%m/%Y %H:%M:%S')
+and lower(complemento) like '%pac%030003%'
+
+
+
+
+
+SELECT faconcad.cod_con,faconcad.fantasia,faplacad.nome_plano,fapaccad.conta_fechada, fapaccad.data_alta_medica, faprtcad.nome_pac
+FROM faconcad,faplacad, faprtcad, fapaccad
+WHERE fapaccad.cod_pac = 'H094828'
+AND fapaccad.cod_prt = faprtcad.cod_prt
+AND fapaccad.cod_con = faplacad.cod_con
+AND fapaccad.cod_pla = faplacad.cod_pla
+AND faplacad.cod_con = faconcad.cod_con
+
+select * from tb_aut_prod where fk_movprd = '35722592'
+select * from famovprd where codigo = '608131' and  comanda in ('C005869', 'B918296')
+select * from rel_dic_campo where nome_campo like '%k_movprd'
+
+update famovprd set tipo_comanda =  '001' where codigo = '608131'  and sequencial = '35722592'--001\C005869
+
+
+select * from wpdtab where lower(descricao) like '%ambu%' order by 2
+select * from wpdtab where cod_parametro = 'qtd_horas_alta_ambulatorio'
+update wpdtab set sistemas = 'AMB;FAT;AMV;MDV' where cod_parametro = 'qtd_horas_alta_ambulatorio' --AMB;FAT;AMV;MDV
+
+select * from wpdtab where cod_parametro = 'usa_alta_ambulatorio'
+update wpdtab set sistemas = 'FAT;DIA;MDV' where cod_parametro = 'usa_alta_ambulatorio' -- FAT;DIA;MDV
+
+
+
+
+SELECT DISTINCT famovcad.cod_pac, 
+                faprtcad.nome_pac, 
+                famovcad.data_mov, 
+                fapaccad.cod_con, 
+                faconcad.fantasia, 
+                fapaccad.cod_pla, 
+                faplacad.nome_plano, 
+                famovprd.codigo, 
+                faprdcad.descricao, 
+                Round(( famovdestino.valor_tot - 
+                        Nvl(Sum( 
+                              tm_devolucao_iac.qt_itens_dev * 
+                        tm_devolucao_iac.vl_itens_ac_req), 0) ), 2) 
+                VALOR_TOT, 
+                Nvl(tb_status_aut.ds_status, 'Pendente') 
+                STATUS_AUT, 
+                tb_aut_prod.dh_sol_aut, 
+                tb_aut_prod.dh_aut, 
+                fapaccad.senha, 
+                fapaccad.matricula, 
+                tb_token.nu_token, 
+                tb_status_token.st_token, 
+                famovprd.sequencial, 
+                famovprd.tipo_comanda, 
+                famovprd.comanda, 
+                tb_just_altcusto.fk_presci, 
+                tb_just_altcusto.pk_justaltcusto, 
+                CASE Upper(faprdcad.tipo_prd) 
+                  WHEN 'MED' THEN faprdcad.tipo_prd 
+                  ELSE fatipcad.pre_class 
+                END 
+                PRE_CLASS, 
+                Nvl(PRESC_ITE_PED.dh_cadastro, 
+                Nvl(PRESC_ITE_DISTRIB.dh_cadastro, 
+                PRESC_ITE_EXA.dh_cadastro)) DH_CADASTRO, 
+                CASE 
+                  WHEN ( Upper(faprdcad.tipo_prd) <> 'MED' 
+                         AND Upper(fatipcad.pre_class) = 'MAT' ) 
+                        OR ( tb_just_altcusto.fk_presci > 0 ) THEN 'S' 
+                  ELSE 'N' 
+                END 
+                PODE_REEMITIR 
+FROM   famovcad 
+       INNER JOIN famovprd 
+               ON famovprd.tipo_comanda = famovcad.tipo_comanda 
+                  AND famovprd.comanda = famovcad.comanda 
+                  AND famovprd.sn_altcusto = 'S' 
+       INNER JOIN famovdestino 
+               ON famovdestino.sequencial = famovprd.sequencial 
+                  AND famovdestino.destino = 'C' 
+       INNER JOIN faprdcad 
+               ON faprdcad.codigo = famovprd.codigo 
+       INNER JOIN fatipcad 
+               ON fatipcad.tipo_prd = faprdcad.tipo_prd 
+       INNER JOIN fapaccad 
+               ON fapaccad.cod_pac = famovcad.cod_pac 
+       INNER JOIN faprtcad 
+               ON faprtcad.cod_prt = fapaccad.cod_prt 
+       INNER JOIN faconcad 
+               ON faconcad.cod_con = fapaccad.cod_con 
+       INNER JOIN faplacad 
+               ON faplacad.cod_con = fapaccad.cod_con 
+                  AND faplacad.cod_pla = fapaccad.cod_pla 
+       LEFT JOIN tb_aut_prod 
+              ON tb_aut_prod.fk_movprd = famovprd.sequencial 
+       LEFT JOIN tb_status_aut 
+              ON tb_status_aut.pk_staaut = tb_aut_prod.fk_staaut 
+       LEFT JOIN faguicad 
+              ON faguicad.cod_pac = famovcad.cod_pac 
+                 AND faguicad.cod_guia = famovprd.cod_guia 
+       LEFT JOIN fasencad 
+              ON fasencad.cod_guia = faguicad.cod_guia 
+       LEFT JOIN tb_token 
+              ON tb_token.fk_senha_token = fasencad.cod_sen 
+       LEFT JOIN tb_status_token 
+              ON tb_status_token.pk_sttkn = tb_token.fk_sttkn_token 
+       LEFT JOIN popedite 
+              ON popedite.documento = famovcad.pedido 
+                 AND popedite.cod_prd = famovprd.codigo 
+       LEFT JOIN tm_prescricao_ite PRESC_ITE_PED 
+              ON ( PRESC_ITE_PED.pk_presci = popedite.fk_presci 
+                    OR PRESC_ITE_PED.fk_presci = popedite.fk_presci ) 
+                 AND PRESC_ITE_PED.fk_codigo = popedite.cod_prd 
+       LEFT JOIN item_distrib 
+              ON item_distrib.tipo_comanda_req = famovprd.tipo_comanda 
+                 AND item_distrib.comanda_req = famovprd.comanda 
+                 AND item_distrib.cod_pac = famovcad.cod_pac 
+                 AND item_distrib.codigo = famovprd.codigo 
+       LEFT JOIN tm_prescricao_ite PRESC_ITE_DISTRIB 
+              ON PRESC_ITE_DISTRIB.fk_codigo = item_distrib.codigo 
+                 AND PRESC_ITE_DISTRIB.dh_cadastro = item_distrib.data_hora_ini 
+       LEFT JOIN itens_ped_proced 
+              ON itens_ped_proced.tipo_comanda = famovprd.tipo_comanda 
+                 AND itens_ped_proced.comanda = famovprd.comanda 
+                 AND itens_ped_proced.cod_prd = famovprd.codigo 
+       LEFT JOIN pedidos_proced 
+              ON pedidos_proced.num_pedido = itens_ped_proced.num_pedido 
+       LEFT JOIN sol_exame 
+              ON sol_exame.num_pedido = pedidos_proced.num_pedido 
+                 AND sol_exame.cod_pac = pedidos_proced.cod_pac 
+                 AND sol_exame.data_hora_ped_exa = pedidos_proced.data_hora 
+       LEFT JOIN item_sol_exa 
+              ON item_sol_exa.cod_pac = sol_exame.cod_pac 
+                 AND item_sol_exa.dat_solicitacao = sol_exame.dat_solicitacao 
+                 AND item_sol_exa.codigo = itens_ped_proced.cod_prd 
+       LEFT JOIN tm_prescricao_ite PRESC_ITE_EXA 
+              ON PRESC_ITE_EXA.pk_presci = item_sol_exa.fk_presci 
+       LEFT JOIN tb_just_altcusto 
+              ON tb_just_altcusto.fk_presci = PRESC_ITE_PED.pk_presci 
+                  OR tb_just_altcusto.fk_presci = PRESC_ITE_DISTRIB.pk_presci 
+                  OR tb_just_altcusto.fk_presci = famovprd.fk_presci 
+                  OR tb_just_altcusto.fk_presci = item_sol_exa.fk_presci 
+       LEFT JOIN tm_devolucao_iac 
+              ON tm_devolucao_iac.fk_movprd_req = famovprd.sequencial 
+WHERE  famovcad.req_dev = 'R' 
+       AND fapaccad.cod_uni = 'HVIT' 
+       AND famovcad.cod_pac = 'H049671' 
+       AND famovcad.data_mov BETWEEN To_date('18/10/2018', '%d/%m/%Y') AND 
+                                     To_date( 
+                                     '30/10/2018', '%d/%m/%Y') 
+GROUP  BY famovcad.cod_pac, 
+          faprtcad.nome_pac, 
+          famovcad.data_mov, 
+          fapaccad.cod_con, 
+          faconcad.fantasia, 
+          fapaccad.cod_pla, 
+          faplacad.nome_plano, 
+          famovprd.codigo, 
+          faprdcad.descricao, 
+          famovdestino.valor_tot, 
+          tb_status_aut.ds_status, 
+          tb_aut_prod.dh_sol_aut, 
+          tb_aut_prod.dh_aut, 
+          fapaccad.senha, 
+          fapaccad.matricula, 
+          tb_token.nu_token, 
+          tb_status_token.st_token, 
+          famovprd.sequencial, 
+          famovprd.tipo_comanda, 
+          famovprd.comanda, 
+          famovprd.quant, 
+          tb_just_altcusto.fk_presci, 
+          tb_just_altcusto.pk_justaltcusto, 
+          faprdcad.tipo_prd, 
+          fatipcad.pre_class, 
+          PRESC_ITE_PED.dh_cadastro, 
+          PRESC_ITE_DISTRIB.dh_cadastro, 
+          PRESC_ITE_EXA.dh_cadastro 
+HAVING Round(( famovdestino.valor_tot - 
+                            Nvl(Sum( 
+                            tm_devolucao_iac.qt_itens_dev * 
+                            tm_devolucao_iac.vl_itens_ac_req), 0) ), 2) > 0 
+       AND ( famovprd.quant - Nvl(Sum(tm_devolucao_iac.qt_itens_dev), 0) ) > 0 
+
+
+
+
+
+select * from 
+
+select * from tb_status_aut
+
+select * from famovprd where sequencial = '35722597'
+
+select * from famovprd where comanda = 'B918296'
+
+select * from tb_aut_prod where fk_movprd  in
+('35635578',
+'35635579',
+'35635580')
+
+delete from tb_aut_prod where pk_autpro = '999999'
+
+select count(pk_autpro) from tb_aut_prod
+insert into tb_aut_prod values ('999999', '2', '35635578', null, null)
+
+select * from famovprd where sequencial = '35635578' in ( '35635578', '35635579')
+select * from tb_aut_prod where fk_movprd = '35635578'
+select * from rel_dic_campo where nome_campo like '%_staaut'
+
+select * from tb_aut_prod where fk_movprd in ('35635578', '35635579')
+select fk_staaut from tb_aut_prod where fk_movprd = ''
+
+select * from tb_aut_prod where fk_movprd = '35722593'
+
+select * from tb_aut_prod  where fk_movprd = '35635579'
+update tb_aut_prod set dh_aut = null  where fk_movprd = '35635579'
+update tb_aut_prod set dh_aut = '2018-10-26 10:07:25'  where fk_movprd = '35635579'
+2018-10-26 10:07:25
+
+
+select * from FAMOVHIS where comanda = 'B918296' order by data
+
+
+
+
+
+
+
+
+
+---TESTE UM
+select comanda, tipo_comanda, cod_pac from famovcad where comanda =  'B918296'
+select comanda, codigo, tipo_comanda, tipo_ato, sequencial from famovprd where comanda = 'B918296'
+select * from tb_aut_prod where fk_movprd in 
+('35635578',
+'35635579',
+'35635580')
+
+
+-- TESTE DOIS
+select comanda, tipo_comanda, cod_pac from famovcad where comanda =  'C005882'
+select comanda, codigo, tipo_comanda, tipo_ato, sequencial from famovprd where comanda = 'C005882'
+select * from tb_aut_prod where fk_movprd in (
+'35722601',
+'35722602',
+'35722603')
+
+
+
+
+
+
+
+
+
+
+
+
+

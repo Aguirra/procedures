@@ -1,0 +1,10 @@
+----ORIENTAÇÃO PARA A EXECUÇÃO DOS SCRIPTS----
+
+1º - RODAR O SCRIPT "script_acerto_estkit 1.sql"
+	 SOLICITAR AO DBA QUE ENVIE O RESULTADO DO ULTIMO SELECT, POIS SE FAZ NECESSARIO PARA REALIZAR O AJUSTE DO ESTOQUE
+
+2º - COM O RESULTADO DO SELECT DO PRIMEIRO SCRIPT DEVE SER FEITO UM ACERTO NO ESTOQUE
+	Obs: Os itens com quantidade maior que zero deverão ser feito um crédito no estoque para estes itens. O crédito deverá
+		 levar em consideração, cod_prd (produto), cod_set (setor) e cod_barra_int (código de barras interno).
+		 
+3º - DEPOIS DO ACERTO RODAR O SCRIPT "script_atualiza_estkit 2.sql"

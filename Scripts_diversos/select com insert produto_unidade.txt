@@ -1,0 +1,34 @@
+insert into produto_unidade
+    (cod_uni, codigo, saldo_emp, saldo_mov, ped_min, est_min, qtd_pen, custo_med, cus_medind,
+     custo_atu, qtd_ultmov, doc_ultmov, mov_ultmov, tim_ultmov, for_ultmov, des_ultcom,
+     ult_ped, ult_compra, dat_ultmov, dat_ultcon, classificacao, ponto_ressupr,
+     estoque_minimo, prd_lib, prof_prd_comanda, prod_nao_padr, sn_bloqueado, qt_estoque_maximo,
+     qt_estoque_seguran, qt_dias_estoque, qt_sld_permanente, qt_cons_med_diario, sn_dm_comped,
+     sn_gera_mapa, fk_esclpr, sn_day_clinic, nu_tempo_perman)
+  select
+    cod_uni, codigo, saldo_emp, saldo_mov, ped_min, est_min, qtd_pen, custo_med, cus_medind,
+    custo_atu, qtd_ultmov, doc_ultmov, mov_ultmov, tim_ultmov, for_ultmov, des_ultcom,
+    ult_ped, ult_compra, dat_ultmov, dat_ultcon, classificacao, ponto_ressupr,
+    estoque_minimo, prd_lib, prof_prd_comanda, prod_nao_padr, sn_bloqueado, qt_estoque_maximo,
+    qt_estoque_seguran, qt_dias_estoque, qt_sld_permanente, qt_cons_med_diario, sn_dm_comped,
+    sn_gera_mapa, fk_esclpr, sn_day_clinic, nu_tempo_perman
+  from (
+    select
+      'HCB' cod_uni, pc.codigo, pc.saldo_emp, pc.saldo_mov, pc.ped_min, pc.est_min, pc.qtd_pen, pc.custo_med, pc.cus_medind,
+      pc.custo_atu, pc.qtd_ultmov, pc.doc_ultmov, pc.mov_ultmov, pc.tim_ultmov, pc.for_ultmov, pc.des_ultcom,
+      pc.ult_ped, pc.ult_compra, pc.dat_ultmov, pc.dat_ultcon, pc.classificacao, pc.ponto_ressupr,
+      pc.estoque_minimo, pc.prd_lib, pc.prof_prd_comanda, pc.prod_nao_padr, 'N' sn_bloqueado, pc.qt_estoque_maximo,
+      pc.qt_estoque_seguran, pc.qt_dias_estoque, pc.qt_sld_permanente, 0 qt_cons_med_diario, pc.sn_dm_comped,
+      pc.sn_gera_mapa, pc.fk_esclpr, pc.sn_day_clinic, pc.nu_tempo_perman
+    from faprdcad pc
+    where codigo in ('225320','225312')
+    union all
+    select
+      'HAT' cod_uni, pc.codigo, pc.saldo_emp, pc.saldo_mov, pc.ped_min, pc.est_min, pc.qtd_pen, pc.custo_med, pc.cus_medind,
+      pc.custo_atu, pc.qtd_ultmov, pc.doc_ultmov, pc.mov_ultmov, pc.tim_ultmov, pc.for_ultmov, pc.des_ultcom,
+      pc.ult_ped, pc.ult_compra, pc.dat_ultmov, pc.dat_ultcon, pc.classificacao, pc.ponto_ressupr,
+      pc.estoque_minimo, pc.prd_lib, pc.prof_prd_comanda, pc.prod_nao_padr, 'N' sn_bloqueado, pc.qt_estoque_maximo,
+      pc.qt_estoque_seguran, pc.qt_dias_estoque, pc.qt_sld_permanente, 0 qt_cons_med_diario, pc.sn_dm_comped,
+      pc.sn_gera_mapa, pc.fk_esclpr, pc.sn_day_clinic, pc.nu_tempo_perman
+    from faprdcad pc
+   where codigo in ('225320','225312'))
