@@ -1,4 +1,6 @@
-
+/*
+script para realizar a atualizacao de ordem, deixando o ultimo item com status P
+*/
 DECLARE 
     VORDEM VARCHAR2(255):= '0';
     VCOUNT NUMBER:=0;
