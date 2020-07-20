@@ -1,0 +1,12 @@
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\bin\Debug\apps_hig.exe.config
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\bin\Debug\apps_hig.exe
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\bin\Debug\apps_hig.pdb
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\bin\Debug\apps_hig.xml
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\obj\Debug\apps_hig.vbprojAssemblyReference.cache
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\obj\Debug\apps_hig.Resources.resources
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\obj\Debug\apps_hig.vbproj.GenerateResource.cache
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\obj\Debug\apps_hig.vbproj.CoreCompileInputs.cache
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\obj\Debug\apps_hig.exe
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\obj\Debug\apps_hig.xml
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\obj\Debug\apps_hig.pdb
+C:\Users\usuario\Desktop\Procedures\Projeto_GIT\empresa_net\emp_hig_solution\apps_hig\obj\Debug\apps_hig.SistemasIntegrados.resources

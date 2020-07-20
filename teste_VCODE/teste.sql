@@ -1,0 +1,1 @@
+select 'Ricardo' from dual;
